@@ -68,9 +68,4 @@ public class TestaController {
 		return "testa";
 	}
 	
-	@RequestMapping("/listar")
-	public String testaListar(Model model){
-		model.addAttribute("marcas",marcaService.listar());
-		return "listar";
-	}
 }
