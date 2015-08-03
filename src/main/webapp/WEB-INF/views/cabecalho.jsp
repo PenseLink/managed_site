@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-theme.min.css"/>"/>
         
         <script type="text/javascript">
-            $(document).ready(function() {
+        /*$(document).ready(function() {
                 $("a").click(function(e) {
                     e.preventDefault();
                     var href = $(this).attr('href');
@@ -26,6 +26,7 @@
                     $(this).attr('class', 'btn btn-primary btn-menu');
                 });
             });
+            */
             
         </script>
         
@@ -35,15 +36,9 @@
             <div class="row">                
                 <div class="jumbotron col-md-12 barra-superior">
                     <div class="col-md-4">
-                        <a href="/managed_site/marca/listar"><button id="listar" class="btn btn-default btn-menu"><strong>Marca</strong></button></a>
+                        <a href=""><button id="listar" class="btn btn-default btn-menu"><strong>Marca</strong></button></a>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div id="conteudo" class="col-md-12">
-                    Esse é o inicio
-                </div>                
-            </div>		
-        </div>
-    </body>
-</html>
+            <div id="conteudo" class="col-md-12">

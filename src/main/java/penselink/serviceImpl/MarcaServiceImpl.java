@@ -26,5 +26,9 @@ public class MarcaServiceImpl implements MarcaService{
 	public List<Marca> listar(){
 		return marcaEao.listar();
 	}
+
+	public boolean remover(Integer id) {
+		return marcaEao.deletar(id);
+	}
 	
 }

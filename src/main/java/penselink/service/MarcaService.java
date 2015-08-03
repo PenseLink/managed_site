@@ -10,4 +10,6 @@ public interface MarcaService {
 	public Marca getById(Integer id);
 	
 	public List<Marca> listar ();
+	
+	public boolean remover(Integer id);
 }

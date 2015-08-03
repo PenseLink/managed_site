@@ -44,7 +44,9 @@ public class MarcaEaoImpl implements MarcaEao{
 	public boolean deletar(Integer id) {
 		entityManager = dbSingleton.getEntityManager();
 		try{
-			entityManager.remove(getById(id));
+			Marca marca = getById(id);
+			entityManager.merge(marca);
+			entityManager.remove(marca);
 			return true;
 		}catch(Exception e){
 			e.printStackTrace();

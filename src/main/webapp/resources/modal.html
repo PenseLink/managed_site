@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("a").click(function(e) {
+                e.preventDefault();
+                var href = $(this).attr('href');
+                $("#conteudo").load(href + " #conteudo");
+            });
+        });
+        $(document).ready(function() {
+            $(".btn-menu").click(function() {
+                $(".btn-menu").attr('class', 'btn btn-default btn-menu');
+                $(this).attr('class', 'btn btn-primary btn-menu');
+                alert("Entrou na funcao click button generic");
+            });
+        });
+        $(document).ready(function(){
+            $(".editar").submit(function(){
+                //alert("entrou");
+                /*var value = $(this).attr('value');
+                alert(value + " #myModal");
+                //$("#myModal").load(value + " #myModal");
+                 */
+                $('#myModal').modal('show');
+
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                })
+
+            });
+        });
+    </script>
+    <title></title>
+</head>
+<body>
+<button id="cli" class="editar"><span class="glyphicon glyphicon-import"></span></button>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</body>
+</html>
