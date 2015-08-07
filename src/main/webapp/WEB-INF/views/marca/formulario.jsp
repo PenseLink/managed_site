@@ -35,6 +35,7 @@
 		$(document).ready(function(){
 			$("#btn-submit").click(function(){
 				$.post('marca/efetivarCadastro',$("#formulario").serialize());
+				$("#mod-msg").load("sucesso");
 				return true;
 			});
 		});
@@ -51,8 +52,9 @@
 	      <form method="post" action="" id="formulario">
 		      <div class="modal-body">
 		      <div class="form-group">
+		      	<input type="hidden" value="${marca.id}" name="id" id="id"/>
 		        <label for="nome">Nome:</label>
-		        <input id="nome" name="nome" class="form-control" type="text"/>
+		        <input id="nome" name="nome" class="form-control" type="text" value="${marca.nome}"/>
 		      </div>
 		      </div>
 		      <div class="modal-footer">
@@ -70,6 +72,7 @@
 		$(document).ready(function(){
 			$("#btn-submit").click(function(){
 				$.post('marca/efetivarEdicao',$("#formulario").serialize());
+				$("#mod-msg").load("sucesso");
 				return true;
 			});
 		});

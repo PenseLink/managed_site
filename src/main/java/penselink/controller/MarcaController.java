@@ -41,7 +41,8 @@ public class MarcaController {
     
     @RequestMapping(value="/marca/efetivarEdicao", method=RequestMethod.POST)
     public String efetivarEdicao(Model model, Marca marca){
-    
+    	marcaService.editar(marca);
+    	return "redirect:/marca";
     }
     
     @RequestMapping("/marca/cadastrar")
@@ -52,13 +53,18 @@ public class MarcaController {
     @RequestMapping(value="/marca/efetivarCadastro", method=RequestMethod.POST)
     public String efetivarCadastro(Model model, Marca marca){
     	marcaService.cadastrar(marca);
-    	return "redirect:/marca";
+    	return "/marca/marca";
     }
     
     @RequestMapping("/marca/remover/{id}")
     public String remover(Model model, @PathVariable ("id") Integer id){
     	System.out.println(id);
     	marcaService.remover(id);
-    	return "redirect:/marca";
+    	return "/marca/marca";
+    }
+    
+    @RequestMapping("/sucesso")
+    public String successo (){
+    	return "/marca/sucesso";
     }
 }

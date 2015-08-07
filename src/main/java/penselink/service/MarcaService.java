@@ -7,6 +7,8 @@ import penselink.model.entidades.Marca;
 public interface MarcaService {
 	public void cadastrar(Marca marca);
 	
+	public void editar(Marca marca);
+	
 	public Marca getById(Integer id);
 	
 	public List<Marca> listar ();

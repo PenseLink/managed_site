@@ -54,6 +54,9 @@
 <div id="mod">
                     
 </div>
+<div id="mod-msg">
+
+</div>
 
 
 <jsp:include page="../rodape.jsp"></jsp:include>

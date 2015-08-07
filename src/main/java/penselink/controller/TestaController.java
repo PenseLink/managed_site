@@ -36,7 +36,7 @@ public class TestaController {
 	@RequestMapping("/tipo/testeInsere")
 	public String testaInsereTipo(){
 		Tipo tipo = new Tipo();
-		tipo.setDescricao("Informática");
+		tipo.setDescricao("Informï¿½tica");
 		tipoService.cadastrar(tipo);
 		return "testa";
 	}
@@ -56,11 +56,6 @@ public class TestaController {
 		produto.setSubtipo(subtipoService.getById(1));
 		produtoService.cadastrar(produto);
 		return "testa";
-	}
-	
-	@RequestMapping("/")
-	public String testaIndex(){
-		return "index";
 	}
 	
 	@RequestMapping("/testa")

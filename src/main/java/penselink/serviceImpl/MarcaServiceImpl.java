@@ -20,7 +20,8 @@ public class MarcaServiceImpl implements MarcaService{
 	}
 
 	public Marca getById(Integer id) {
-		return marcaEao.getById(id);
+		Marca marca = marcaEao.getById(id);
+		return marca;
 	}
 	
 	public List<Marca> listar(){
@@ -29,6 +30,10 @@ public class MarcaServiceImpl implements MarcaService{
 
 	public boolean remover(Integer id) {
 		return marcaEao.deletar(id);
+	}
+
+	public void editar(Marca marca) {
+		marcaEao.editar(marca);
 	}
 	
 }
