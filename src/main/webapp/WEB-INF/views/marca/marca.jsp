@@ -2,22 +2,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <jsp:include page="../cabecalho.jsp"></jsp:include>         
-         <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function(){
 	    $(".editar").click(function(e){
 	    	e.preventDefault();
 	       	var href = $(this).attr('href');
 	        $("#mod").load(href);
 	    });
-	});
-    $(document).ready(function(){
 	    $(".cadastrar").click(function(e){
 	    	e.preventDefault();
 	       	var href = $(this).attr('href');
 	        $("#mod").load(href);
 	    });
+	    
+	    $('#tabela-marca').DataTable();
 	});
-    
 </script>
 
 <div id="conteudo">
@@ -31,12 +30,13 @@
     
     <div class="col-md-3"></div>    
     <div class="tabela col-md-6 text-center">
-        <table class="table table-bordered table-responsive text-center" id="tabela-marca">
-            <tr>
+        <table datatable="" class="table table-striped table-bordered table-compact" id="tabela-marca">
+            <thead>
                 <th>Número</th>
                 <th>Nome </th>
                 <th>Ações</th>
-            </tr>
+            </thead>
+            <tbody>
             <c:forEach var="marca" items="${marcas}">
                 <tr id="${marca.id}">
                     <td>${marca.id}</td>
@@ -47,6 +47,7 @@
                     </td>
                 </tr>
             </c:forEach>
+            </tbody>
         </table>
     </div>
     

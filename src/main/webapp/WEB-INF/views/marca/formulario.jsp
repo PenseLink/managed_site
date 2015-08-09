@@ -34,9 +34,33 @@
 		/* CODIGO FUNCIONANDO NÃO RECARREGA A PÁGINA */
 		$(document).ready(function(){
 			$("#btn-submit").click(function(){
-				$.post('marca/efetivarCadastro',$("#formulario").serialize());
-				$("#mod-msg").load("sucesso");
-				return true;
+				//$.post('marca/efetivarCadastro',$("#formulario").serialize());
+				//$("#mod-msg").load("sucesso");
+				//return true;
+				var dados = $("#formulario").serialize();
+				$.ajax({
+					type: "post",
+					url: "marca/efetivarCadastro",
+					cache: false,
+					data: dados,
+					success: function(response){						
+						var newRow = $("<tr>");
+						var cols = "";
+						cols += '<td>'+response.id+'</td>';
+						cols += '<td>'+response.nome+'</td>';
+						cols += '<td><a id="editar-'+response.id+'" class="btn btn-info editar glyphicon glyphicon-edit"></a>&nbsp &nbsp &nbsp<a id="remover-'+response.id+'" class="btn btn-warning excluir glyphicon glyphicon-trash"></a></td>';
+						newRow.append(cols);
+						$("#tabela-marca").append(newRow);						
+						//$("#marca-nome-"+response.id).html(response.nome);
+						$("editar-"+response.id).attr("href" , "/managed_site/marca/editar/"+response.id);
+						$("remover-"+response.id).attr("href" , "/managed_site/marca/remover/"+response.id);
+						$("#mod-msg").load("sucesso");
+						return true;
+					},
+					error: function(){
+						alert("Algo muito ruim aconteceu!");
+					}
+				});
 			});
 		});
 	</script>

@@ -21,8 +21,9 @@ public class MarcaEaoImpl implements MarcaEao{
 		
 		try{
 			entityManager.getTransaction().begin();
-			entityManager.persist(marca);
+			entityManager.persist(marca);			
 			entityManager.getTransaction().commit();
+			System.out.println(marca.getId());
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
