@@ -6,12 +6,16 @@
 
 package penselink.controller;
 
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import penselink.model.entidades.Marca;
 import penselink.service.MarcaService;
@@ -39,10 +43,9 @@ public class MarcaController {
     	return "marca/formulario";
     }
     
-    @RequestMapping(value="/marca/efetivarEdicao", method=RequestMethod.POST)
-    public String efetivarEdicao(Model model, Marca marca){
-    	marcaService.editar(marca);
-    	return "redirect:/marca";
+    @RequestMapping(value="/marca/efetivarEdicao")    
+    public @ResponseBody Marca efetivarEdicao(Model model, Marca marca) throws Exception{
+    	return marca;
     }
     
     @RequestMapping("/marca/cadastrar")
@@ -50,10 +53,10 @@ public class MarcaController {
     	return "marca/formulario";
     }
     
-    @RequestMapping(value="/marca/efetivarCadastro", method=RequestMethod.POST)
-    public String efetivarCadastro(Model model, Marca marca){
+    @RequestMapping(value="/marca/efetivarCadastro", method=RequestMethod.POST)    
+    public @ResponseBody Marca efetivarCadastro(Model model, Marca marca){
     	marcaService.cadastrar(marca);
-    	return "/marca/marca";
+    	return marca;
     }
     
     @RequestMapping("/marca/remover/{id}")
@@ -67,4 +70,5 @@ public class MarcaController {
     public String successo (){
     	return "/marca/sucesso";
     }
+    
 }

@@ -31,7 +31,7 @@
     
     <div class="col-md-3"></div>    
     <div class="tabela col-md-6 text-center">
-        <table class="table table-bordered table-responsive text-center">
+        <table class="table table-bordered table-responsive text-center" id="tabela-marca">
             <tr>
                 <th>Número</th>
                 <th>Nome </th>
@@ -40,10 +40,10 @@
             <c:forEach var="marca" items="${marcas}">
                 <tr id="${marca.id}">
                     <td>${marca.id}</td>
-                    <td>${marca.nome}</td>
-                    <td><a href="/managed_site/marca/editar/${marca.id}" class="btn btn-info editar glyphicon glyphicon-edit"></a>
+                    <td id="marca-nome-${marca.id}">${marca.nome}</td>
+                    <td><a id="editar-${marca.id}" href="/managed_site/marca/editar/${marca.id}" class="btn btn-info editar glyphicon glyphicon-edit"></a>
                         &nbsp &nbsp &nbsp 
-                        <a href="/managed_site/marca/remover/${marca.id}"  class="btn btn-warning excluir glyphicon glyphicon-trash"></a>
+                        <a id="remover-${marca.id}" href="/managed_site/marca/remover/${marca.id}"  class="btn btn-warning excluir glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>
             </c:forEach>

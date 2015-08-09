@@ -6,7 +6,7 @@ import penselink.model.entidades.Usuario;
 public class TestaUsuario {
 
 	public static void main (String[] args){
-		valida();
+		cadastra();
 	}
 	
 	public static void valida(){

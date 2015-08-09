@@ -27,8 +27,5 @@
 	
 	<mvc:annotation-driven />
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
-	
-	<mvc:interceptors>
-		<bean class="penselink.util.AutorizadorInterceptador"/>
-	</mvc:interceptors>
+
 </beans>

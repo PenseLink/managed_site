@@ -65,15 +65,42 @@
 	    </div>
 	  </div>
 	</div>
+	<div id="meuTeste">
+	</div>
+	
 	<script>
 		$(document).ready(function(){
 			$('#myModal').modal('show');
 		});
+		/*
 		$(document).ready(function(){
 			$("#btn-submit").click(function(){
 				$.post('marca/efetivarEdicao',$("#formulario").serialize());
 				$("#mod-msg").load("sucesso");
 				return true;
+			});
+		});
+		*/
+		
+		$(document).ready(function(){
+			$("#btn-submit").click(function(){
+				var dados = $("#formulario").serialize();
+				$.ajax({
+					type: "post",
+					url: "marca/efetivarEdicao",
+					cache: false,
+					data: dados,
+					success: function(response){						
+						$("#marca-nome-"+response.id).html(response.nome);
+						$("editar-"+response.id).attr("href" , "/managed_site/marca/editar/"+response.id);
+						$("remover-"+response.id).attr("href" , "/managed_site/marca/remover/"+response.id);
+						$("#mod-msg").load("sucesso");
+						return true;
+					},
+					error: function(){
+						alert("Algo muito ruim aconteceu!");
+					}
+				});
 			});
 		});
 	</script>
