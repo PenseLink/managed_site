@@ -3,18 +3,22 @@
          pageEncoding="ISO-8859-1"%>
 <jsp:include page="../cabecalho.jsp"></jsp:include>         
 <script type="text/javascript">
-    $(document).ready(function(){
-	    $(".editar").click(function(e){
-	    	e.preventDefault();
-	       	var href = $(this).attr('href');
-	        $("#mod").load(href);
-	    });
-	    $(".cadastrar").click(function(e){
-	    	e.preventDefault();
-	       	var href = $(this).attr('href');
-	        $("#mod").load(href);
-	    });
-	    
+	//Carrega a tela de edição
+	$(document).on('click','.editar',function(e){
+		e.preventDefault();
+	   	var href = $(this).attr('href');
+	    $("#mod").load(href);
+	});
+	
+	//Carrega a tela de cadastro
+    $(document).on('click','.cadastrar',function(e){
+    	e.preventDefault();
+       	var href = $(this).attr('href');
+        $("#mod").load(href);
+    });
+	
+	//Formatada a tabela
+    $(document).ready(function(){ 
 	    $('#tabela-marca').DataTable();
 	});
 </script>
@@ -41,9 +45,7 @@
                 <tr id="${marca.id}">
                     <td>${marca.id}</td>
                     <td id="marca-nome-${marca.id}">${marca.nome}</td>
-                    <td><a id="editar-${marca.id}" href="/managed_site/marca/editar/${marca.id}" class="btn btn-info editar glyphicon glyphicon-edit"></a>
-                        &nbsp &nbsp &nbsp 
-                        <a id="remover-${marca.id}" href="/managed_site/marca/remover/${marca.id}"  class="btn btn-warning excluir glyphicon glyphicon-trash"></a>
+                    <td><a id="editar-${marca.id}" href="/managed_site/marca/editar/${marca.id}" class="btn btn-info editar glyphicon glyphicon-edit"></a>&nbsp&nbsp&nbsp<a id="remover-${marca.id}" href="/managed_site/marca/remover/${marca.id}"  class="btn btn-warning excluir glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>
             </c:forEach>

@@ -6,8 +6,7 @@
 
 package penselink.controller;
 
-
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,6 +35,17 @@ public class MarcaController {
         return "marca/marca";
     }
     
+    
+    public ArrayList<Marca> listarPaginacao(){
+    	/*
+    	 * parametros: 
+    		quantidade de registros por página
+    		ordem dos registros
+    		página destino
+    	*/
+    	return null;
+    }
+    
     @RequestMapping("/marca/editar/{id}")
     public String editar(Model model, @PathVariable ("id") Integer id){
         Marca marca = marcaService.getById(id);
@@ -45,6 +55,7 @@ public class MarcaController {
     
     @RequestMapping(value="/marca/efetivarEdicao")    
     public @ResponseBody Marca efetivarEdicao(Model model, Marca marca) throws Exception{
+    	marcaService.editar(marca);
     	return marca;
     }
     

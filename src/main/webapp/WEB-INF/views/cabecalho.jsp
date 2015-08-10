@@ -12,7 +12,7 @@
         <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js"/>"></script>         
         <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-theme.min.css"/>"/>
         <script type="text/javascript" src="<c:url value="/resources/js/jquery.DataTables.min.js"/>"></script>
-        <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/dataTables.bootstrap.css"/>"/>
+        <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/jquery.DataTables.min.css"/>"/>
         
         <script type="text/javascript">
         /*$(document).ready(function() {

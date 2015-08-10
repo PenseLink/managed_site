@@ -1,6 +1,7 @@
 package penselink.model.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,11 +13,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table
 @NamedQueries({
-	@NamedQuery(name="Marca.recuperarTodos",query="SELECT m FROM Marca m")
+	@NamedQuery(name="Marca.recuperarTodos",query="SELECT m FROM Marca m"),
+	@NamedQuery(name="Marca.recuperarTodosOrdenadoPorDataCadastro",query="SELECT m FROM Marca m ORDER BY m.dataCadastro"),
+	@NamedQuery(name="Marca.recuperarComPaginacao",query="SELECT m FROM Marca m ORDER BY :ordem")
 })
 public class Marca implements Serializable{
 	
@@ -26,6 +31,8 @@ public class Marca implements Serializable{
 	private String nome;
 	@OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
 	private List<Produto> listaDeProdutos;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCadastro;
 	
 	public Integer getId() {
 		return id;
@@ -45,4 +52,12 @@ public class Marca implements Serializable{
 	public void setListaDeProdutos(List<Produto> listaDeProdutos) {
 		this.listaDeProdutos = listaDeProdutos;
 	}
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	
+	
 }

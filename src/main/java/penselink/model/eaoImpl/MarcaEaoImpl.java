@@ -1,5 +1,7 @@
 package penselink.model.eaoImpl;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,9 +23,10 @@ public class MarcaEaoImpl implements MarcaEao{
 		
 		try{
 			entityManager.getTransaction().begin();
+			Date data = new Date();
+			marca.setDataCadastro(data);
 			entityManager.persist(marca);			
 			entityManager.getTransaction().commit();
-			System.out.println(marca.getId());
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
@@ -38,10 +41,18 @@ public class MarcaEaoImpl implements MarcaEao{
 
 	public List<Marca> listar() {
 		entityManager = dbSingleton.getEntityManager();
-		Query query = entityManager.createNamedQuery("Marca.recuperarTodos");
+		Query query = entityManager.createNamedQuery("Marca.recuperarTodosOrdenadoPorDataCadastro");
 		return (List<Marca>)query.getResultList();
 	}
-
+	
+	public List<Marca> listarComPaginacao(int firstResult, int maxResults){
+		entityManager = dbSingleton.getEntityManager();
+		Query query = entityManager.createNamedQuery("");
+		query.setFirstResult(firstResult);
+		query.setMaxResults(maxResults);
+		return (List<Marca>)query.getResultList();
+	}
+	
 	public boolean deletar(Integer id) {
 		entityManager = dbSingleton.getEntityManager();
 		try{
