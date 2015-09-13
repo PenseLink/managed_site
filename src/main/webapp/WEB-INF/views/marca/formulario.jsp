@@ -30,9 +30,10 @@
 		$(document).ready(function(){
 			$('#myModal').modal('show');
 			$("#btn-submit").on('click',function(){
-				//$.post('marca/efetivarCadastro',$("#formulario").serialize());
-				//$("#mod-msg").load("sucesso");
-				//return true;
+				$.post('marca/efetivarCadastro',$("#formulario").serialize());
+				$("#mod-msg").load("sucesso");
+				return true;
+				/*
 				var dados = $("#formulario").serialize();
 				var tabela = $('#tabela-marca').DataTable();
 				$.ajax({
@@ -53,6 +54,7 @@
 						alert("Algo muito ruim aconteceu!");
 					}
 				});
+				*/
 			});
 		});
 	</script>

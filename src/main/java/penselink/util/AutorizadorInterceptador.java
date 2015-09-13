@@ -5,16 +5,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+
+
 public class AutorizadorInterceptador extends HandlerInterceptorAdapter{
 
 	public boolean preHandler(HttpServletRequest request, 
 								HttpServletResponse response, 
 								Object controller)
 										throws Exception{
+		
 		String uri = request.getRequestURI();
-		if(uri.endsWith("verificaLogin") || 
-				uri.endsWith("login")|| 
-				uri.contains("resources")){
+		if(uri.endsWith("verificaLogin") || uri.endsWith("login")|| uri.contains("resources")){
 			System.out.println("Passou pelo if dos resources");
 			return true;
 		}

@@ -39,9 +39,9 @@ public class MarcaController {
     public ArrayList<Marca> listarPaginacao(){
     	/*
     	 * parametros: 
-    		quantidade de registros por página
+    		quantidade de registros por pï¿½gina
     		ordem dos registros
-    		página destino
+    		pï¿½gina destino
     	*/
     	return null;
     }
@@ -72,7 +72,6 @@ public class MarcaController {
     
     @RequestMapping("/marca/remover/{id}")
     public String remover(Model model, @PathVariable ("id") Integer id){
-    	System.out.println(id);
     	marcaService.remover(id);
     	return "/marca/marca";
     }

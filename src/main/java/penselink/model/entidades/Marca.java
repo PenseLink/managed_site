@@ -20,9 +20,8 @@ import javax.persistence.TemporalType;
 @Table
 @NamedQueries({
 	@NamedQuery(name="Marca.recuperarTodos",query="SELECT m FROM Marca m"),
-	@NamedQuery(name="Marca.recuperarTodosOrdenadoPorDataCadastro",query="SELECT m FROM Marca m ORDER BY m.dataCadastro"),
-	@NamedQuery(name="Marca.recuperarComPaginacao",query="SELECT m FROM Marca m ORDER BY :ordem")
-})
+	@NamedQuery(name="Marca.recuperarTodosOrdenadoPorDataCadastro",query="SELECT m FROM Marca m ORDER BY m.dataCadastro")
+	})
 public class Marca implements Serializable{
 	
 	@Id
