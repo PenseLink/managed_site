@@ -29,6 +29,7 @@ public class MarcaController {
     @Autowired
     private MarcaService marcaService;
     
+    //Abre o CRUD de marca
     @RequestMapping("/marca")
     public String listar(Model model){
         model.addAttribute("marcas",marcaService.listar());
@@ -46,6 +47,7 @@ public class MarcaController {
     	return null;
     }
     
+    //Metodo que abre a modal de edicao
     @RequestMapping("/marca/editar/{id}")
     public String editar(Model model, @PathVariable ("id") Integer id){
         Marca marca = marcaService.getById(id);
@@ -53,29 +55,42 @@ public class MarcaController {
     	return "marca/formulario";
     }
     
+    //Metodo que efetivamente edita o item
     @RequestMapping(value="/marca/efetivarEdicao")    
     public @ResponseBody Marca efetivarEdicao(Model model, Marca marca) throws Exception{
     	marcaService.editar(marca);
     	return marca;
     }
     
+    //Metodo que abre a modal de cadastro
     @RequestMapping("/marca/cadastrar")
     public String cadastrar(){
     	return "marca/formulario";
     }
     
+    //Metodo que efetiva o cadastro do item
     @RequestMapping(value="/marca/efetivarCadastro", method=RequestMethod.POST)    
     public @ResponseBody Marca efetivarCadastro(Model model, Marca marca){
     	marcaService.cadastrar(marca);
     	return marca;
     }
     
+    //Metodo que abre o dialogo de confirmacao de remocao
     @RequestMapping("/marca/remover/{id}")
+    public String dialogoRemover(Model model, @PathVariable ("id") Integer id){
+    	Marca marca = marcaService.getById(id);
+        model.addAttribute("marca", marca);
+    	return "marca/dialog";
+    }
+    
+    //Metodo que efetivamente remove o item
+    @RequestMapping("/marca/remove/{id}")
     public String remover(Model model, @PathVariable ("id") Integer id){
     	marcaService.remover(id);
     	return "/marca/marca";
     }
     
+    //Abre a modal de sucesso
     @RequestMapping("/sucesso")
     public String successo (){
     	return "/marca/sucesso";

@@ -17,10 +17,19 @@
         $("#mod").load(href);
     });
 	
-	//Formatada a tabela
+  	//Carrega a tela de cadastro
+    $(document).on('click','.excluir',function(e){
+    	e.preventDefault();
+       	var href = $(this).attr('href');
+        $("#mod").load(href);
+    });
+  	
+  	//Formata a tabela
     $(document).ready(function(){ 
 	    $('#tabela-marca').DataTable();
 	});
+	
+	
 </script>
 
 <div id="conteudo">

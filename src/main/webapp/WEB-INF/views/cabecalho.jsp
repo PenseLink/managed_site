@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-theme.min.css"/>"/>
         <script type="text/javascript" src="<c:url value="/resources/js/jquery.DataTables.min.js"/>"></script>
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/jquery.DataTables.min.css"/>"/>
-        
+        <noscript>Para continuar habilite o JavaScript</noscript>
         <script type="text/javascript">
         /*$(document).ready(function() {
                 $("a").click(function(e) {

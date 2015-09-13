@@ -30,10 +30,6 @@
 		$(document).ready(function(){
 			$('#myModal').modal('show');
 			$("#btn-submit").on('click',function(){
-				$.post('marca/efetivarCadastro',$("#formulario").serialize());
-				$("#mod-msg").load("sucesso");
-				return true;
-				/*
 				var dados = $("#formulario").serialize();
 				var tabela = $('#tabela-marca').DataTable();
 				$.ajax({
@@ -42,11 +38,16 @@
 					cache: false,
 					data: dados,
 					success: function(response){
-						tabela.row.add([
+						var lineTest = tabela.row.add([
 								response.id,
 								'<td id="marca-nome-'+response.id+'">'+response.nome+'</td>',
 	                            '<a href="/managed_site/marca/editar/'+response.id+'" id="editar-'+response.id+'" class="btn btn-info editar glyphicon glyphicon-edit"></a>&nbsp&nbsp&nbsp<a href="/managed_site/marca/remover/'+response.id+'" id="remover-'+response.id+'" class="btn btn-warning excluir glyphicon glyphicon-trash"></a>'
 						]).draw();
+						//var rowIndex = $('#tabela-marca').dataTable().fnAddData(response);
+						//var row = $('#tabela-marca').dataTable().fnGetNodes(rowIndex);
+						alert(lineTest);
+						$(lineTest).attr( 'id', response.id );
+						
 						$("#mod-msg").load("sucesso");
 						return true;
 					},
@@ -54,7 +55,6 @@
 						alert("Algo muito ruim aconteceu!");
 					}
 				});
-				*/
 			});
 		});
 	</script>
