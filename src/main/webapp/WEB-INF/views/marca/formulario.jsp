@@ -28,9 +28,14 @@
 	</div>
 	<script>
 		$(document).ready(function(){
+			//Abre a modal de cadastro
 			$('#myModal').modal('show');
+			
+			//Funtion que efetiva o cadastro e insere os dados na view
 			$("#btn-submit").on('click',function(){
+				//dados do formulario
 				var dados = $("#formulario").serialize();
+				//get na tabela de Marcas
 				var tabela = $('#tabela-marca').DataTable();
 				$.ajax({
 					type: "post",
@@ -38,15 +43,11 @@
 					cache: false,
 					data: dados,
 					success: function(response){
-						var lineTest = tabela.row.add([
+						tabela.row.add([					        
 								response.id,
-								'<td id="marca-nome-'+response.id+'">'+response.nome+'</td>',
+								response.nome,
 	                            '<a href="/managed_site/marca/editar/'+response.id+'" id="editar-'+response.id+'" class="btn btn-info editar glyphicon glyphicon-edit"></a>&nbsp&nbsp&nbsp<a href="/managed_site/marca/remover/'+response.id+'" id="remover-'+response.id+'" class="btn btn-warning excluir glyphicon glyphicon-trash"></a>'
 						]).draw();
-						//var rowIndex = $('#tabela-marca').dataTable().fnAddData(response);
-						//var row = $('#tabela-marca').dataTable().fnGetNodes(rowIndex);
-						alert(lineTest);
-						$(lineTest).attr( 'id', response.id );
 						
 						$("#mod-msg").load("sucesso");
 						return true;
@@ -87,9 +88,6 @@
 	</div>
 	
 	<script>
-		$(document).ready(function(){
-			$('#myModal').modal('show');
-		});
 		/*
 		$(document).ready(function(){
 			$("#btn-submit").click(function(){
@@ -100,8 +98,14 @@
 		});
 		*/
 		
+		
 		$(document).ready(function(){
-			$("#btn-submit").click(function(){
+			
+			//Abre a modal de edicao
+			$('#myModal').modal('show');
+			
+			//Funtion que efetiva a edicao e altera os dados na view
+			$("#btn-submit").click(function(e){
 				var dados = $("#formulario").serialize();
 				$.ajax({
 					type: "post",
