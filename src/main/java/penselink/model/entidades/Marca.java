@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,11 +25,16 @@ import javax.persistence.TemporalType;
 	})
 public class Marca implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	@OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "marca", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Produto> listaDeProdutos;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCadastro;

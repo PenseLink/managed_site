@@ -3,9 +3,12 @@ package penselink.model.eaoImpl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import penselink.model.eao.UsuarioEao;
 import penselink.model.entidades.Usuario;
@@ -13,30 +16,22 @@ import penselink.util.dbSingleton;
 
 @Component
 public class UsuarioEaoImpl implements UsuarioEao{
-
+	
+	@PersistenceContext
 	private EntityManager entityManager;
 	
+	@Transactional(propagation=Propagation.REQUIRED ,readOnly=false)
 	public void cadastrar(Usuario usuario) {
-		entityManager = dbSingleton.getEntityManager();
-		try{
-			entityManager.getTransaction().begin();
-			entityManager.persist(usuario);
-			entityManager.getTransaction().commit();
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			entityManager.close();
-		}
+		entityManager.persist(usuario);			
 	}
 
 	public List<Usuario> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = entityManager.createNamedQuery("Usuario.recuperarTodos");
+		return (List<Usuario>) query.getResultList();
 	}
 
 	public Usuario getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Usuario.class, id);
 	}
 
 	public boolean deletar(Integer id) {

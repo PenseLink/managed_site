@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import penselink.model.eao.MarcaEao;
 import penselink.model.entidades.Marca;
+import penselink.model.entidades.Produto;
 import penselink.service.MarcaService;
 
-@Component
+@Service
 public class MarcaServiceImpl implements MarcaService{
 
 	@Autowired
@@ -24,7 +27,15 @@ public class MarcaServiceImpl implements MarcaService{
 		return marca;
 	}
 	
+	@Transactional(readOnly = true)
 	public List<Marca> listar(){
+		//List<Marca> marcas = marcaEao.listar();
+		/*for (Marca m : marcas){
+			for(Produto p : m.getListaDeProdutos()){
+				
+			}
+		}
+		*/
 		return marcaEao.listar();
 	}
 

@@ -21,13 +21,11 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	public List<Usuario> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return usuarioEao.listar();
 	}
 
 	public Usuario getById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return usuarioEao.getById(id);
 	}
 
 	public boolean deletar(Integer id) {

@@ -6,7 +6,10 @@
 
 package penselink.controller;
 
+import javax.jws.WebService;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import penselink.model.entidades.Marca;
+import penselink.model.entidades.Produto;
 import penselink.service.MarcaService;
 
 /**
@@ -29,6 +33,11 @@ public class MarcaController {
     @Autowired
     private MarcaService marcaService;
     
+    @RequestMapping(value="/marca/teste")
+    public String testaWB(){
+    	return "wb_teste/NewFile";
+    }
+    
     //Abre o CRUD de marca
     @RequestMapping("/marca")
     public String listar(Model model){
@@ -36,6 +45,16 @@ public class MarcaController {
         return "marca/marca";
     }
     
+    
+    @RequestMapping(value="/marca/webService/{id}")
+    public @ResponseBody Marca marcaWebService(@PathVariable("id")Integer id,Model model, Marca marca){
+    	return marcaService.getById(id);   	
+    }
+    
+    @RequestMapping(value="/marca/webServiceListar")
+    public @ResponseBody List<Marca> marcaWebService(Model model, Marca marca){    	
+    	return marcaService.listar();   	
+    }
     
     public ArrayList<Marca> listarPaginacao(){
     	/*

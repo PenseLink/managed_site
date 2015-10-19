@@ -1,16 +1,12 @@
 package penselink.model.eaoImpl;
 
-
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import penselink.model.eao.MarcaEao;
 import penselink.model.entidades.Marca;
 
@@ -30,7 +26,8 @@ public class MarcaEaoImpl implements MarcaEao{
 	}
 
 	public List<Marca> listar() {
-		Query query = entityManager.createNamedQuery("Marca.recuperarTodosOrdenadoPorDataCadastro");
+		//TypedQuery<Marca> query = entityManager.createQuery("from Marca", Marca.class);
+		Query query = entityManager.createNamedQuery("Marca.recuperarTodos");						
 		return (List<Marca>)query.getResultList();
 	}
 	

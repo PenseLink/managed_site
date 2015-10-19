@@ -30,7 +30,7 @@
 		$(document).ready(function(){
 			//Abre a modal de cadastro
 			$('#myModal').modal('show');
-			
+						
 			//Funtion que efetiva o cadastro e insere os dados na view
 			$("#btn-submit").on('click',function(){
 				//dados do formulario
@@ -39,17 +39,18 @@
 				var tabela = $('#tabela-marca').DataTable();
 				$.ajax({
 					type: "post",
-					url: "marca/efetivarCadastro",
+					url: "/managed_site/marca/efetivarCadastro",
 					cache: false,
 					data: dados,
 					success: function(response){
-						tabela.row.add([					        
-								response.id,
-								response.nome,
-	                            '<a href="/managed_site/marca/editar/'+response.id+'" id="editar-'+response.id+'" class="btn btn-info editar glyphicon glyphicon-edit"></a>&nbsp&nbsp&nbsp<a href="/managed_site/marca/remover/'+response.id+'" id="remover-'+response.id+'" class="btn btn-warning excluir glyphicon glyphicon-trash"></a>'
-						]).draw();
-						
-						$("#mod-msg").load("sucesso");
+						var tr = '<tr id="'+response.id+'">'+'<td>'
+						+response.id+'</td><td id="marca-nome-'+response.id+'">'
+						+response.nome+'</td><td>'+'<a href="/managed_site/marca/editar/'
+						+response.id+'" id="editar-'+response.id+'" class="btn btn-info editar glyphicon glyphicon-edit"></a>&nbsp&nbsp&nbsp<a href="/managed_site/marca/remover/'
+						+response.id+'" id="remover-'+response.id+'" class="btn btn-warning excluir glyphicon glyphicon-trash"></a>'+'</td></tr>'
+
+						tabela.row.add($(tr)).draw();						
+						$("#mod-msg").load("/managed_site/sucesso");
 						return true;
 					},
 					error: function(){
@@ -109,14 +110,14 @@
 				var dados = $("#formulario").serialize();
 				$.ajax({
 					type: "post",
-					url: "marca/efetivarEdicao",
+					url: "/managed_site/marca/efetivarEdicao",
 					cache: false,
 					data: dados,
 					success: function(response){						
 						$("#marca-nome-"+response.id).html(response.nome);
 						$("editar-"+response.id).attr("href" , "/managed_site/marca/editar/"+response.id);
 						$("remover-"+response.id).attr("href" , "/managed_site/marca/remover/"+response.id);
-						$("#mod-msg").load("sucesso");
+						$("#mod-msg").load("/managed_site/sucesso");
 						return true;
 					},
 					error: function(){

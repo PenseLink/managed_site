@@ -28,7 +28,7 @@
 	</div>
 	<script>
 	$(document).ready(function(){
-		$("#myModal").modal('show');
+		$("#myModal").modal('show');		
 		$("#btn-submit").on('click',function(){
 			var action = $('#action').val();
 			var idRemover = $('#id').val();
@@ -37,8 +37,9 @@
 				url: action,
 				cache: false,
 				success: function(response){
-					$("#"+idRemover).closest('tr').remove().draw(); 
-					$("#mod-msg").load("sucesso");
+					var tabela = $("#tabela-marca").DataTable();
+					tabela.row($("#"+idRemover).closest('tr')).remove().draw();				
+					$("#mod-msg").load("/managed_site/sucesso");
 					return true;
 				},
 				error: function(){
