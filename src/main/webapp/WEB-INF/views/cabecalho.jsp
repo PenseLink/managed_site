@@ -14,6 +14,15 @@
         <script type="text/javascript" src="<c:url value="/resources/js/jquery.DataTables.min.js"/>"></script>
         <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/jquery.DataTables.min.css"/>"/>
         <noscript>Para continuar habilite o JavaScript</noscript>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt-1.10.10/jqc-1.11.3,dt-1.10.10,b-1.1.0,se-1.1.0/datatables.min.css"/>
+		<script type="text/javascript" src="https://cdn.datatables.net/r/dt-1.10.10/jqc-1.11.3,dt-1.10.10,b-1.1.0,se-1.1.0/datatables.min.js"></script>
+        
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.1.0/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/select/1.1.0/js/dataTables.select.min.js"></script>
+        <script type="text/javascript" src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+        
         <script type="text/javascript">
         /*$(document).ready(function() {
                 $("a").click(function(e) {
