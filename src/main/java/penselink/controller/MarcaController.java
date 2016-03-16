@@ -6,8 +6,6 @@
 
 package penselink.controller;
 
-import javax.jws.WebService;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import penselink.model.entidades.Marca;
-import penselink.model.entidades.Produto;
 import penselink.service.MarcaService;
-import penselink.tableModel.MarcaTableModel;
-
 /**
  *
  * @author Geovan
@@ -62,7 +57,7 @@ public class MarcaController {
     	return marcaService.listar();   	
     }
     
-    @RequestMapping(value="/marca/tableModel")
+/*    @RequestMapping(value="/marca/tableModel")
     public @ResponseBody List<MarcaTableModel> marcaTableModelService(){
     	List<MarcaTableModel> lista = new ArrayList<MarcaTableModel>();
     	for(Marca m : marcaService.listar()){
@@ -70,7 +65,7 @@ public class MarcaController {
     		lista.add(mtb);    		
     	}
     	return lista;
-    }
+    }*/
     
     public ArrayList<Marca> listarPaginacao(){
     	/*
