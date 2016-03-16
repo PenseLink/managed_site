@@ -9,8 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"	user-scalable="no">
         <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>"></script>
 		<link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>" />
-        <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js"/>"></script>         
+        <!-- <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js"/>"></script> -->         
         <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-theme.min.css"/>"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         
         <script type="text/javascript">
             $(document).ready(function() {

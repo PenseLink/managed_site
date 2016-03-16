@@ -1,0 +1,3 @@
+Estou lendo do arquivo
+que pode ter várias linhas
+And Nothing else Matters

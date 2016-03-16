@@ -85,6 +85,13 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.2.6.Final</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>info.cukes</groupId>
+		    <artifactId>cucumber-java</artifactId>
+		    <version>1.2.3</version>
+		    <scope>test</scope>
+		</dependency>
                                
 
 		<!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->

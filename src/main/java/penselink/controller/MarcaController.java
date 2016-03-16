@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import penselink.model.entidades.Marca;
 import penselink.service.MarcaService;
+
 /**
  *
  * @author Geovan
@@ -56,16 +57,6 @@ public class MarcaController {
     public @ResponseBody List<Marca> marcaWebService(Model model, Marca marca){    	
     	return marcaService.listar();   	
     }
-    
-/*    @RequestMapping(value="/marca/tableModel")
-    public @ResponseBody List<MarcaTableModel> marcaTableModelService(){
-    	List<MarcaTableModel> lista = new ArrayList<MarcaTableModel>();
-    	for(Marca m : marcaService.listar()){
-    		MarcaTableModel mtb = new MarcaTableModel(m.getId().toString(), m.getNome().toString());
-    		lista.add(mtb);    		
-    	}
-    	return lista;
-    }*/
     
     public ArrayList<Marca> listarPaginacao(){
     	/*
