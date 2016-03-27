@@ -14,6 +14,10 @@ import javax.persistence.Table;
 @Table
 public class LayoutEspecificacoes implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3288252388843899289L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;

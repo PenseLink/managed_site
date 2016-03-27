@@ -19,6 +19,10 @@ import java.io.Serializable;
 })
 public class Usuario implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5771451159866755288L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;

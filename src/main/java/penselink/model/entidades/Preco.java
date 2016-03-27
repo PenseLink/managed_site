@@ -1,6 +1,7 @@
 package penselink.model.entidades;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,29 +15,35 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ESPECIFICACAO")
-public class Especificacao implements Serializable{
-	
+@Table(name="PRECO")
+public class Preco implements Serializable {
+
 	/**
-	 * Identificação da classe
+	 * 
 	 */
-	private static final long serialVersionUID = 7445472425051709665L;
-	
-	/**Id da especificacao*/
+	private static final long serialVersionUID = 5837068227638047883L;
+
+	/**Id do Preço*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id;
 	
-	/**Titulo da especificacao*/
-	@Column(name="titulo",length=255,nullable=false)
-	private String titulo;
-	
-	/**Valor da especificacao*/
-	@Column(name="valor", length=255, nullable=false)
-	private String valor;
-	
-	/**Instancia do produto*/
 	@JoinColumn(name="produto_id")
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=Produto.class)
 	private Produto produto;
+	
+	/**Valor*/
+	@Column(name="valor",nullable=false)
+	private BigDecimal valor;
+	
+	/**Indicador de preço atual*/
+	@Column(name="atual_indic",nullable=false)
+	private Boolean indicadorAtual;
+	
+	/**instancia do tipo de preco*/
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY,targetEntity=TipoPreco.class)
+	@JoinColumn(name="tipo_preco_id",nullable=false)
+	private TipoPreco tipoPreco;
+	
 }

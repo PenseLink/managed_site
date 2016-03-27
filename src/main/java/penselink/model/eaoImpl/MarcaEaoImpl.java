@@ -11,7 +11,7 @@ import penselink.model.eao.MarcaEao;
 import penselink.model.entidades.Marca;
 
 @Repository
-public class MarcaEaoImpl implements MarcaEao{
+public class MarcaEaoImpl extends GenericEAOIMPL<Marca, Integer> implements MarcaEao {
 
 	@PersistenceContext
 	private EntityManager entityManager;
